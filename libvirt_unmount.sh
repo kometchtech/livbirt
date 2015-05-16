@@ -1,6 +1,6 @@
 #!/bin/bash
-for POOL in `/usr/bin/virsh pool-list --type=netfs | grep active | cut -f2 -d" "`
+for VPOOL in `/bin/mount -t nfs4 | /usr/bin/awk '{ print $3}'`
 do
-  /usr/bin/virsh pool-destroy $POOL
+  /bin/umount -f -l $VPOOL
 done
 exit 0
