@@ -1,6 +1,6 @@
 [Unit]
 Description=/etc/rc.local.shutdown Compatibility
-ConditionFileIsExecutable=/etc/systemd/system/libvirt_unmount.sh
+ConditionFileIsExecutable=/etc/systemd/system/libvirt_umountnfs.sh
 DefaultDependencies=no
 #After=rc-local.service basic.target
 Before=shutdown.target
@@ -8,7 +8,7 @@ Before=shutdown.target
 
 [Service]
 Type=oneshot
-ExecStart=/etc/systemd/system/libvirt_unmount.sh
+ExecStart=/etc/systemd/system/libvirt_umountnfs.sh
 StandardInput=tty
 RemainAfterExit=yes
 #JobTimeoutSec=900
