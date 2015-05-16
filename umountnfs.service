@@ -1,0 +1,17 @@
+[Unit]
+Description=/etc/rc.local.shutdown Compatibility
+ConditionFileIsExecutable=/etc/systemd/system/libvirt_unmount.sh
+DefaultDependencies=no
+#After=rc-local.service basic.target
+Before=shutdown.target
+#JobTimeoutSec=900
+
+[Service]
+Type=oneshot
+ExecStart=/etc/systemd/system/libvirt_unmount.sh
+StandardInput=tty
+RemainAfterExit=yes
+#JobTimeoutSec=900
+
+[Install]
+WantedBy=shutdown.target
